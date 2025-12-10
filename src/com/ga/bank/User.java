@@ -9,17 +9,15 @@ public abstract class User implements IUser{
     private String password;
     private int age;
     private String address;
-    private String role;
+    private String role = "Customer";
     private int loginTrial = 3;
     private boolean logged = false;
-    private String checkingAccount;
-    private String savingAccount;
+    private String checkingAccount ="";
+    private String savingAccount ="";
 
     private static int maxLoginAttempts = 3;
     private static int waitTimeInMin = 1;
-    File file = new File("assets/Users.txt");
-
-
+    File Usersfile = new File("assets/Users.txt");
 
 
     public String getUsername() {
@@ -62,6 +60,22 @@ public abstract class User implements IUser{
         this.role = role;
     }
 
+    public String getCheckingAccount() {
+        return checkingAccount;
+    }
+
+    public void setCheckingAccount(String checkingAccount) {
+        this.checkingAccount = checkingAccount;
+    }
+
+    public String getSavingAccount() {
+        return savingAccount;
+    }
+
+    public void setSavingAccount(String savingAccount) {
+        this.savingAccount = savingAccount;
+    }
+
     public String hashPassword(String password) throws Exception{
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashed = md.digest(password.getBytes("UTF-8"));
@@ -69,7 +83,7 @@ public abstract class User implements IUser{
     }
 
     public boolean userFetch(String username){
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(Usersfile))) {
             String line;
             List<String> lineArray;
 
@@ -91,7 +105,7 @@ public abstract class User implements IUser{
 
     public int userFetch(String username, String password) throws Exception{
         int found = -1;
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(Usersfile))) {
             List<String> allLines = new ArrayList<>();
             String line;
             List<String> lineArray;
@@ -132,7 +146,7 @@ public abstract class User implements IUser{
                     allLines.add(String.join(",", lineArray));
                 }
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Usersfile))){
                 for (String l : allLines) {
                     writer.write(l);
                     writer.newLine();
@@ -147,12 +161,13 @@ public abstract class User implements IUser{
     }
 
     @Override
-    public void signup() throws Exception{
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+    public boolean signup() throws Exception{
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Usersfile, true))) {
             Scanner read = new Scanner(System.in);
 
             // Ask for user info
-            System.out.println("Fill your info: ");
+            System.out.println("\t\t\tSignup\t\t\t");
+            System.out.println("Please fill information below: ");
             System.out.print("Username: ");
             this.username = read.next();
             System.out.print("Age: ");
@@ -164,24 +179,25 @@ public abstract class User implements IUser{
 
             //Add the info to the file
             if(!userFetch(this.username)){
-                writer.write(username + "," + age + "," + password + "," + address + ",Customer,0,,");
+                writer.write(username + "," + age + "," + password + "," + address + "," + role + ",0,,");
                 writer.newLine();
+                this.logged = true;
             }else {
                 System.out.println("This username is already used please try another one");
-                signup();
             }
-
         }catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }
+        return this.logged;
     }
 
     @Override
-    public void login() throws Exception{
+    public boolean login() throws Exception{
         Scanner read = new Scanner(System.in);
 
         // Ask for user info
-        System.out.println("Fill your info: ");
+        System.out.println("\t\t\tlogin\t\t\t");
+        System.out.println("Please fill information below: ");
         System.out.print("Username: ");
         this.username = read.next();
         System.out.print("Password: ");
@@ -189,32 +205,40 @@ public abstract class User implements IUser{
 
         int flag = userFetch(this.username, hashPassword(this.password));
         if(flag == 0){
-            System.out.println("logged successfully, Hello " + this.getUsername());
+            System.out.println("\n||||||||||||| logged successfully, Hello " + this.getUsername()+ " 👋🏻 |||||||||||");
             this.logged = true;
         } else if(flag == -1) {
-            System.out.println("No user with this username please signup first");
+            System.out.println("* No user with this username please signup first *");
         } else if(flag == 1){
-            System.out.println("Uncorrect username or password");
+            System.out.println("* Wrong username or password *");
         }else{
-            System.out.println("You could try again now");
+            System.out.println("* You could try again now *");
         }
+
+        return this.logged;
     }
 
-    public void createAccount(String type){
+    public void addAccount(){
         if(logged){
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(Usersfile))) {
                 List<String> allLines = new ArrayList<>();
                 String line;
                 List<String> lineArray;
+                Scanner read = new Scanner(System.in);
+                Account account = new Account();
+
 
                 while ((line = reader.readLine()) != null){
                     //Read the info from the file, -1 to keep empty places
                     lineArray = new ArrayList<>(Arrays.asList(line.split(",", -1)));
-
                     if(lineArray.get(0).equals(this.username)) {
+                        System.out.println("enter");
                         // Ask for user info
-                        Account account = new Account();
-                        if(type == "checking") {
+                        System.out.print("what type of account do you want to create:\n1:Checking\n2:Saving\nEnter the chosen number: ");
+                        int type = read.nextInt();
+                        System.out.print("what type of card do you want:\n1:Mastercard\n2:Mastercard Titanium\n3:Mastercard Platinum\nEnter the chosen number: ");
+                        int cardType = read.nextInt();
+                        if(type == 1) {
                             if(this.checkingAccount.isEmpty()){
                             this.checkingAccount = account.getIBAN();
                             account.setAccountType("checking");
@@ -222,7 +246,7 @@ public abstract class User implements IUser{
                             } else {
                                 System.out.println("Already have checking account");
                             }
-                        }else if (type == "saving") {
+                        }else if (type == 2) {
                             if(this.savingAccount.isEmpty()){
                             this.savingAccount = account.getIBAN();
                             account.setAccountType("saving");
@@ -230,21 +254,40 @@ public abstract class User implements IUser{
                             } else {
                                 System.out.println("Already have saving account");
                             }
+                        }else {
+                            System.out.println("Uncorrect request");
                         }
+
+                        if(cardType == 1)
+                            account.setCardType("Mastercard");
+                        else if(cardType == 2)
+                            account.setCardType("Mastercard Titanium");
+                        else if(cardType == 3)
+                            account.setCardType("Mastercard Platinum");
+                        else
+                            System.out.println("Uncorrect card type");
+
+                        account.createAccount();
                     }
                     allLines.add(String.join(",", lineArray));
                 }
 
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(Usersfile))){
                     for (String l : allLines) {
                         writer.write(l);
                         writer.newLine();
                     }
                 }
 
+                File file = new File("assets/transactionHistory/" + account.getIBAN() + ".txt");
+                file.createNewFile();
+
             }catch (IOException e) {
                 System.err.println("Error reading to file: " + e.getMessage());
             }
         }
     }
+
+    abstract public String toString();
+
 }

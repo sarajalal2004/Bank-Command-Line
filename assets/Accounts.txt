@@ -1,0 +1,11 @@
+IBN0,-200.0,checking,Mastercard,false,2
+IBN1,170.0,saving,Mastercard,true,0
+IBN2,103150.0,saving,Mastercard Titanium,true,0
+IBN3,0,saving,Mastercard Platinum,true,0
+IBN0,0.0,checking,Mastercard Titanium,true,0
+IBN11,0.0,checking,Mastercard Platinum,true,0
+IBN11,0.0,checking,Mastercard Titanium,true,0
+IBN11,0.0,saving,Mastercard Titanium,true,0
+IBN11,0.0,saving,Mastercard Titanium,true,0
+IBN11,0.0,checking,Mastercard,true,0
+IBN15,0.0,checking,Mastercard,true,0
