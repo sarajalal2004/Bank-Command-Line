@@ -2,6 +2,7 @@ package com.ga.bank;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -29,12 +30,18 @@ public class Main {
                 Account account = new Account();
                 String IBAN;
                 if (user.getRole().equals("Customer")) {
-                    List<String> allAccount = List.of(
-                            Optional.ofNullable(user.getCheckingAccount()).orElse(null),
-                            Optional.ofNullable(user.getSavingAccount()).orElse(null)
-                    ).stream().filter(accountIBAN -> accountIBAN != null).toList();
-                    System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
 
+                List<String> allAccount = new ArrayList<>();
+
+                if (user.getCheckingAccount().isEmpty()) {
+                    allAccount.add(user.getCheckingAccount());
+                }
+
+                if (user.getSavingAccount().isEmpty()) {
+                    allAccount.add(user.getSavingAccount());
+                }
+
+                    System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
                     if (allAccount.size() == 1) {
                         System.out.println("You have 1 account:");
                         System.out.println("1: " + allAccount.get(0));
@@ -96,7 +103,7 @@ public class Main {
                             break;
                         case 7:
                             logged = false;
-                            System.out.print("\t\tlogged out Successfully");
+                            System.out.println("\t\tlogged out Successfully");
                             break;
                         default:
                             System.out.println("No choice with this number");
@@ -104,7 +111,7 @@ public class Main {
                 } else if (user.getRole().equals("Banker")) {
                     Banker banker = new Banker();
                     List<String> allAccount = List.of(Optional.ofNullable(user.getCheckingAccount()).orElse(null), Optional.ofNullable(user.getSavingAccount()).orElse(null)).stream().filter(accountIBAN -> !accountIBAN.equals(null)).toList();
-                    for (int accountIBAN = 0; accountIBAN <= allAccount.size(); accountIBAN++) {
+                    for (int accountIBAN = 0; accountIBAN < allAccount.size(); accountIBAN++) {
                         System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
                         System.out.println("||||||||||||||||| accountIBAN: " + allAccount.get(accountIBAN) + " |||||||||||||||");
                         if (allAccount.size() == 1) {

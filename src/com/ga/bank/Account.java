@@ -98,7 +98,7 @@ public class Account {
 
     public void createAccount() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(accountsfile, true))) {
-            writer.write(IBAN + "," + Balance + "," + AccountType + "," + cardType + "," + Active + "," + overdraftTimes);
+            writer.write("IBN" + (++count) + "," + Balance + "," + AccountType + "," + cardType + "," + Active + "," + overdraftTimes);
             writer.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
