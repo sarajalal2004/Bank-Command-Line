@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Account {
-    private static int count = 15;
+    public static int count = 15;
 
     private String IBAN = "IBN"+count;
     private double Balance = 0;

@@ -219,7 +219,14 @@ public abstract class User implements IUser{
     }
 
     public void addAccount(){
+        File dictionary =  new File("assets/Dictionary.txt");
+
         if(logged){
+            try(BufferedReader reader = new BufferedReader(new FileReader(dictionary))){
+                Account.count = Integer.parseInt(reader.readLine());
+            } catch (IOException e) {
+                System.err.println("Error reading to file: " + e.getMessage());
+            }
             try (BufferedReader reader = new BufferedReader(new FileReader(Usersfile))) {
                 List<String> allLines = new ArrayList<>();
                 String line;
@@ -282,6 +289,11 @@ public abstract class User implements IUser{
                 File file = new File("assets/transactionHistory/" + account.getIBAN() + ".txt");
                 file.createNewFile();
 
+            }catch (IOException e) {
+                System.err.println("Error reading to file: " + e.getMessage());
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(dictionary))){
+                writer.write(++Account.count);
             }catch (IOException e) {
                 System.err.println("Error reading to file: " + e.getMessage());
             }

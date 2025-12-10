@@ -15,3 +15,4 @@ IBN16,0.0,checking,Mastercard Platinum,true,0
 IBN16,0.0,checking,Mastercard,true,0
 IBN16,0.0,saving,Mastercard Titanium,true,0
 IBN16,0.0,saving,Mastercard Platinum,true,0
+IBN1000002,0.0,checking,Mastercard Titanium,true,0
