@@ -67,12 +67,11 @@ public class Main {
                     switch (read.nextInt()) {
                         case 1:
                             System.out.print("\t\tDeposit\nEnter amount:");
-                            System.out.println(account.getAccountType());
                             account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("deposit"));
                             break;
                         case 2:
                             System.out.print("\t\twithdraw\nEnter amount:");
-                            account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
+                            account.withdraw(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
                             break;
                         case 3:
                             System.out.print("\t\tInternal Transfer\nEnter amount:");
@@ -111,20 +110,36 @@ public class Main {
                     }
                 } else if (user.getRole().equals("Banker")) {
                     Banker banker = new Banker();
-                    List<String> allAccount = List.of(Optional.ofNullable(user.getCheckingAccount()).orElse(null), Optional.ofNullable(user.getSavingAccount()).orElse(null)).stream().filter(accountIBAN -> !accountIBAN.equals(null)).toList();
-                    for (int accountIBAN = 0; accountIBAN < allAccount.size(); accountIBAN++) {
-                        System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
-                        System.out.println("||||||||||||||||| accountIBAN: " + allAccount.get(accountIBAN) + " |||||||||||||||");
-                        if (allAccount.size() == 1) {
-                            account.fetchAccount(allAccount.get(accountIBAN));
-                        } else {
-                            if (accountIBAN == 0) {
-                                System.out.println("Choose account\n1: Checking " + allAccount.get(accountIBAN));
-                            } else if (accountIBAN == 1) {
-                                System.out.print("2: Saving " + allAccount.get(accountIBAN) + "\n Enter your choice");
-                            }
-                            account.fetchAccount(allAccount.get(read.nextInt()));
-                        }
+                    List<String> allAccount = new ArrayList<>();
+
+                    if (!user.getCheckingAccount().isEmpty()) {
+                        allAccount.add(user.getCheckingAccount());
+                    }
+
+                    if (!user.getSavingAccount().isEmpty()) {
+                        allAccount.add(user.getSavingAccount());
+                    }
+
+                    System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
+                    if (allAccount.size() == 1) {
+                        System.out.println("You have 1 account:");
+                        System.out.println("1: " + allAccount.get(0));
+                        account.fetchAccount(allAccount.get(0)); // directly fetch
+                    } else if (allAccount.size() == 2) {
+                        System.out.println("You have 2 accounts:");
+                        System.out.println("1: Checking " + allAccount.get(0));
+                        System.out.println("2: Saving   " + allAccount.get(1));
+                        System.out.print("Enter your choice: ");
+                        int choice = read.nextInt();
+
+                        if (choice == 1)
+                            account.fetchAccount(allAccount.get(0));
+                        else if (choice == 2)
+                            account.fetchAccount(allAccount.get(1));
+                        else
+                            System.out.println("Invalid choice!");
+                    } else {
+                        System.out.println("You have no accounts!");
                     }
                     System.out.println("||||||||||||||||||||||||||||||| Account transactions |||||||||||||||||||||||||||||||||||");
                     System.out.print("\n1: deposit\n2: withdraw\n3: Internal Transfer\n4: External Transfer\n5: Transaction Details\n6: Add account\n7: logout\n8: grant bank roles\n9: Activate accounts\nEnter you choice: ");
@@ -135,7 +150,7 @@ public class Main {
                             break;
                         case 2:
                             System.out.print("\t\twithdraw\nEnter amount:");
-                            account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
+                            account.withdraw(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
                             break;
                         case 3:
                             System.out.print("\t\tInternal Transfer\nEnter amount:");

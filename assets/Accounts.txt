@@ -1,4 +1,4 @@
-IBN0,-200.0,checking,Mastercard,false,2
+IBN0,0,checking,Mastercard,true,0
 IBN1,170.0,saving,Mastercard,true,0
 IBN2,103150.0,saving,Mastercard Titanium,true,0
 IBN3,0,saving,Mastercard Platinum,true,0
@@ -18,4 +18,5 @@ IBN2011,0.0,saving,Mastercard,true,0
 IBN2012,0.0,saving,Mastercard,true,0
 IBN2013,0.0,checking,Mastercard Titanium,true,0
 IBN2014,36.0,checking,Mastercard Titanium,true,0
-IBN2015,21.0,checking,Mastercard,true,0
+IBN2015,22.0,checking,Mastercard,true,0
+IBN2016,5.0,saving,Mastercard Platinum,true,0

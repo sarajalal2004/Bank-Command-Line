@@ -1,6 +1,6 @@
 sara,2,shjwav,ass,Banker,2,,
 r,2,U7aRd935f5UXx/nkkwMBBdJY2CQtPsZ0IOIx2JxOYMs=,dsc,Customer,3,,
-Sara,22,BDpxh3TFcr2KJa2+sb/NXAJWrhHOz5+cP5JdDlK+r4k=,slaks,Customer,0,,
+Sara,22,BDpxh3TFcr2KJa2+sb/NXAJWrhHOz5+cP5JdDlK+r4k=,slaks,Banker,0,,
 rami,12,RUNJ5CLwUpcZHq0T4h09tSDlq+9SBV5JZLgvshP1k6E=,r,Customer,0,,IBN0
 raji,121,RUNJ5CLwUpcZHq0T4h09tSDlq+9SBV5JZLgvshP1k6E=,r,Customer,0,IBN1,
 samia,21,BDpxh3TFcr2KJa2+sb/NXAJWrhHOz5+cP5JdDlK+r4k=,s,Customer,0,,IBN2
@@ -21,4 +21,4 @@ v,6,TJRIXgwhrmxBzh3+e2v6zupato5AokdvUCCOUm9QYIA=,v,Customer,0,,IBN2011
 f,0,JS8QyDYQ68oaBZwLroJV66L5W+TR17z6idckioLZ8RE=,f,Customer,0,,IBN2012
 finally,2,JS8QyDYQ68oaBZwLroJV66L5W+TR17z6idckioLZ8RE=,f,Customer,0,IBN2013,
 Sara4,23,BDpxh3TFcr2KJa2+sb/NXAJWrhHOz5+cP5JdDlK+r4k=,s,Customer,0,IBN2014,
-gooo,7,zQqphWFHtsW0/yt9/uXaIKo4JTCZ7xtKZKztIzya/ik=,g,Customer,0,IBN2015,
+gooo,7,zQqphWFHtsW0/yt9/uXaIKo4JTCZ7xtKZKztIzya/ik=,g,Banker,0,IBN2015,IBN2016
