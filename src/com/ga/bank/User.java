@@ -134,7 +134,7 @@ public abstract class User implements IUser{
                                 try {
                                     Thread.sleep(60000); // Wait 3 seconds
                                 } catch (InterruptedException e) {
-                                    Thread.currentThread().interrupt();   // restore flag
+                                    Thread.currentThread().interrupt();
                                     System.out.println("Sleep was interrupted");
                                 }
                                 this.loginTrial = 0;
@@ -247,9 +247,9 @@ public abstract class User implements IUser{
                         int cardType = read.nextInt();
                         if(type == 1) {
                             if(this.checkingAccount.isEmpty()){
-                            this.checkingAccount = account.getIBAN();
-                            account.setAccountType("checking");
-                            lineArray.set(6, account.getIBAN());
+                                this.checkingAccount = account.getIBAN();
+                                account.setAccountType("checking");
+                                lineArray.set(6, account.getIBAN());
                             } else {
                                 System.out.println("Already have checking account");
                             }
@@ -293,7 +293,7 @@ public abstract class User implements IUser{
                 System.err.println("Error reading to file: " + e.getMessage());
             }
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(dictionary))){
-                writer.write(++Account.count);
+                writer.write(String.valueOf(Account.count + 1));
             }catch (IOException e) {
                 System.err.println("Error reading to file: " + e.getMessage());
             }

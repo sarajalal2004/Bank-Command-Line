@@ -41,6 +41,7 @@ public class TransactionHistory {
     public TransactionHistory(String IBAN) {
         this.IBAN = IBAN;
         transactionFileName = "assets/transactionHistory/" + IBAN + ".txt";
+        System.out.println(transactionFileName);
         try (BufferedReader reader = new BufferedReader(new FileReader(transactionFileName))) {
             String line;
             List<String> lineArray;

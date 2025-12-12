@@ -2,17 +2,20 @@ IBN0,-200.0,checking,Mastercard,false,2
 IBN1,170.0,saving,Mastercard,true,0
 IBN2,103150.0,saving,Mastercard Titanium,true,0
 IBN3,0,saving,Mastercard Platinum,true,0
-IBN0,0.0,checking,Mastercard Titanium,true,0
-IBN11,0.0,checking,Mastercard Platinum,true,0
-IBN11,0.0,checking,Mastercard Titanium,true,0
-IBN11,0.0,saving,Mastercard Titanium,true,0
-IBN11,0.0,saving,Mastercard Titanium,true,0
-IBN11,0.0,checking,Mastercard,true,0
-IBN15,26.0,checking,Mastercard,true,0
-IBN16,0.0,checking,Mastercard,true,0
-IBN16,0.0,saving,Mastercard Titanium,true,0
-IBN16,0.0,checking,Mastercard Platinum,true,0
-IBN16,0.0,checking,Mastercard,true,0
-IBN16,0.0,saving,Mastercard Titanium,true,0
-IBN16,0.0,saving,Mastercard Platinum,true,0
 IBN1000002,0.0,checking,Mastercard Titanium,true,0
+IBN2001,0.0,saving,Mastercard Platinum,true,0
+IBN2004,0.0,checking,Mastercard Titanium,true,0
+IBN2005,0.0,checking,Mastercard Titanium,true,0
+IBN2006,0.0,checking,Mastercard Platinum,true,0
+IBN2007,0.0,saving,Mastercard Titanium,true,0
+IBN2008,0.0,checking,Mastercard,true,0
+IBN2008,0.0,saving,Mastercard Titanium,true,0
+IBN2008,0.0,checking,Mastercard,true,0
+IBN2008,0.0,saving,Mastercard Platinum,true,0
+IBN2009,0.0,saving,Mastercard Platinum,true,0
+IBN2010,0.0,saving,Mastercard Titanium,true,0
+IBN2011,0.0,saving,Mastercard,true,0
+IBN2012,0.0,saving,Mastercard,true,0
+IBN2013,0.0,checking,Mastercard Titanium,true,0
+IBN2014,36.0,checking,Mastercard Titanium,true,0
+IBN2015,21.0,checking,Mastercard,true,0

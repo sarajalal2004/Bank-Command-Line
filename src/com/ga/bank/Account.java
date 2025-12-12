@@ -6,15 +6,12 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Account {
-    public static int count = 15;
+    public static int count = 0;
 
     private String IBAN = "IBN"+count;
     private double Balance = 0;
     private String AccountType;
     private String cardType;
-//    private String cardNumber;
-//    private Date expireDate;
-//    private String CVV;
     private boolean Active = true;
     private int overdraftTimes = 0;
     File accountsfile = new File("assets/Accounts.txt");
@@ -56,30 +53,6 @@ public class Account {
         Balance = balance;
     }
 
-//    public String getCardNumber() {
-//        return cardNumber;
-//    }
-//
-//    public void setCardNumber(String cardNumber) {
-//        this.cardNumber = cardNumber;
-//    }
-//
-//    public Date getExpireDate() {
-//        return expireDate;
-//    }
-//
-//    public void setExpireDate(Date expireDate) {
-//        this.expireDate = expireDate;
-//    }
-//
-//    public String getCVV() {
-//        return CVV;
-//    }
-//
-//    public void setCVV(String CVV) {
-//        this.CVV = CVV;
-//    }
-
     public String getCardType() {
         return cardType;
     }
@@ -98,7 +71,7 @@ public class Account {
 
     public void createAccount() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(accountsfile, true))) {
-            writer.write("IBN" + (++count) + "," + Balance + "," + AccountType + "," + cardType + "," + Active + "," + overdraftTimes);
+            writer.write(this.IBAN + "," + Balance + "," + AccountType + "," + cardType + "," + Active + "," + overdraftTimes);
             writer.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -136,7 +109,7 @@ public class Account {
                 List<String> allLines = new ArrayList<>();
                 String line;
                 List<String> lineArray;
-                double limit = cardTypes.get(cardType).get(3);
+                double limit = cardTypes.get(this.cardType).get(3);
 
                 while ((line = reader.readLine()) != null){
                     //Read the info from the file, -1 to keep empty places

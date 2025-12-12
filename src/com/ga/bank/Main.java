@@ -31,15 +31,15 @@ public class Main {
                 String IBAN;
                 if (user.getRole().equals("Customer")) {
 
-                List<String> allAccount = new ArrayList<>();
+                    List<String> allAccount = new ArrayList<>();
 
-                if (user.getCheckingAccount().isEmpty()) {
-                    allAccount.add(user.getCheckingAccount());
-                }
+                    if (!user.getCheckingAccount().isEmpty()) {
+                        allAccount.add(user.getCheckingAccount());
+                    }
 
-                if (user.getSavingAccount().isEmpty()) {
-                    allAccount.add(user.getSavingAccount());
-                }
+                    if (!user.getSavingAccount().isEmpty()) {
+                        allAccount.add(user.getSavingAccount());
+                    }
 
                     System.out.println("||||||||||||||||| Your Accounts |||||||||||||||");
                     if (allAccount.size() == 1) {
@@ -67,6 +67,7 @@ public class Main {
                     switch (read.nextInt()) {
                         case 1:
                             System.out.print("\t\tDeposit\nEnter amount:");
+                            System.out.println(account.getAccountType());
                             account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("deposit"));
                             break;
                         case 2:
