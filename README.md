@@ -1,4 +1,3 @@
-<img width="550" height="167" alt="image" src="https://github.com/user-attachments/assets/02b2ba59-5f4f-4e5e-ab8c-5d6353c865f2" /><img width="599" height="207" alt="image" src="https://github.com/user-attachments/assets/a8a2f89a-d746-4347-8bfd-8a600dea7b4b" /># Command Line Bank
 ## Date: 13/12/2025
 ### By: Sara Jalal
 ### [Email](mailto:saraalkhozaae@gmail.com) | [Linkedin](https://www.linkedin.com/in/sara-alkhozaae) | [GitHub](https://github.com/sarajalal2004)
