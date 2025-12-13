@@ -66,15 +66,15 @@ public class Main {
                     System.out.print("\n1: deposit\n2: withdraw\n3: Internal Transfer\n4: External Transfer\n5: Transaction Details\n6: Add account\n7: logout\nEnter you choice: ");
                     switch (read.nextInt()) {
                         case 1:
-                            System.out.print("\t\tDeposit\nEnter amount:");
+                            System.out.print("\t\tDeposit\nEnter amount: ");
                             account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("deposit"));
                             break;
                         case 2:
-                            System.out.print("\t\twithdraw\nEnter amount:");
+                            System.out.print("\t\twithdraw\nEnter amount: ");
                             account.withdraw(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
                             break;
                         case 3:
-                            System.out.print("\t\tInternal Transfer\nEnter amount:");
+                            System.out.print("\t\tInternal Transfer\nEnter amount: ");
                             if (allAccount.size() > 1) {
                                 if (account.getAccountType().equals("checking"))
                                     account.internalTransfer(read.nextInt(), user.getSavingAccount(), new TransactionHistory(account.getIBAN()).AmountThisDay("Internal Transfer"));
@@ -85,7 +85,7 @@ public class Main {
                             }
                             break;
                         case 4:
-                            System.out.print("\t\tExternal Transfer\nEnter amount and the IBAN of other account:");
+                            System.out.print("\t\tExternal Transfer\nEnter amount and the IBAN of other account: ");
                             account.externalTransfer(read.nextInt(), read.next(), new TransactionHistory(account.getIBAN()).AmountThisDay("External Transfer"));
                             break;
                         case 5:
@@ -145,15 +145,15 @@ public class Main {
                     System.out.print("\n1: deposit\n2: withdraw\n3: Internal Transfer\n4: External Transfer\n5: Transaction Details\n6: Add account\n7: logout\n8: grant bank roles\n9: Activate accounts\nEnter you choice: ");
                     switch (read.nextInt()) {
                         case 1:
-                            System.out.print("\t\tDeposit\nEnter amount:");
+                            System.out.print("\t\tDeposit\nEnter amount: ");
                             account.deposit(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("deposit"));
                             break;
                         case 2:
-                            System.out.print("\t\twithdraw\nEnter amount:");
+                            System.out.print("\t\twithdraw\nEnter amount: ");
                             account.withdraw(read.nextInt(), new TransactionHistory(account.getIBAN()).AmountThisDay("withdraw"));
                             break;
                         case 3:
-                            System.out.print("\t\tInternal Transfer\nEnter amount:");
+                            System.out.print("\t\tInternal Transfer\nEnter amount: ");
                             if (allAccount.size() > 1) {
                                 if (account.getAccountType().equals("checking"))
                                     account.internalTransfer(read.nextInt(), user.getSavingAccount(), new TransactionHistory(account.getIBAN()).AmountThisDay("Internal Transfer"));
@@ -164,7 +164,7 @@ public class Main {
                             }
                             break;
                         case 4:
-                            System.out.print("\t\tExternal Transfer\nEnter amount and the IBAN of other account:");
+                            System.out.print("\t\tExternal Transfer\nEnter amount and the IBAN of other account: ");
                             account.externalTransfer(read.nextInt(), read.next(), new TransactionHistory(account.getIBAN()).AmountThisDay("External Transfer"));
                             break;
                         case 5:
@@ -185,11 +185,11 @@ public class Main {
                             System.out.print("\t\tlogged out Successfully");
                             break;
                         case 8:
-                            System.out.print("\t\tGrant Bank role\nEnter username");
+                            System.out.print("\t\tGrant Bank role\nEnter username: ");
                             banker.grantBankerRole(read.next());
                             break;
                         case 9:
-                            System.out.print("\t\tReactivate account\nEnter IBAN");
+                            System.out.print("\t\tReactivate account\nEnter IBAN: ");
                             banker.accountReactivation(read.next());
                             break;
                         default:

@@ -20,3 +20,5 @@ IBN2013,0.0,checking,Mastercard Titanium,true,0
 IBN2014,36.0,checking,Mastercard Titanium,true,0
 IBN2015,22.0,checking,Mastercard,true,0
 IBN2016,5.0,saving,Mastercard Platinum,true,0
+IBN2017,0,saving,Mastercard Titanium,true,0
+IBN2018,-165.0,checking,Mastercard,true,1

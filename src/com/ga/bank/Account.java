@@ -152,7 +152,6 @@ public class Account {
                 String line;
                 List<String> lineArray;
                 double limit = cardTypes.get(cardType).get(0);
-                System.out.println(limit);
 
                 while ((line = reader.readLine()) != null){
                     //Read the info from the file, -1 to keep empty places
